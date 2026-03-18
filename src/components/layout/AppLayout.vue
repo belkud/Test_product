@@ -2,7 +2,8 @@
   <div class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
     <aside :class="[
-      'bg-slate-900 text-white transition-all duration-300 w-64'
+      'bg-slate-900 text-white transition-all duration-300',
+      isCollapsed ? 'w-20' : 'w-64'
     ]">
       <!-- Logo -->
       <div class="flex items-center gap-3 px-4 py-5 border-b border-slate-700">
