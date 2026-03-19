@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    // GitHub Pages SPA fallback
+    // Redirect all 404s to index.html with the original path in session storage
+    const path = window.location.pathname;
+    const base = '/Test_product/';
+    
+    // Remove base path if present
+    const cleanPath = path.replace(base, '') || '/';
+    
+    // Store the intended path
+    sessionStorage.setItem('redirectPath', cleanPath);
+    
+    // Redirect to index.html
+    window.location.replace(base);
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="/Test_product/">homepage</a>...</p>
+</body>
+</html>

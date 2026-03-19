@@ -63,11 +63,21 @@ const routes = [
 
 export function setupRouter() {
   const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/Test_product/'),
     routes,
   })
 
-  router.beforeEach((to, _from, next) => {
+  router.beforeEach((to, from, next) => {
+    // Handle redirect from 404.html (GitHub Pages SPA fallback)
+    const savedPath = sessionStorage.getItem('redirectPath')
+    if (savedPath && from.name === undefined) {
+      sessionStorage.removeItem('redirectPath')
+      if (savedPath !== to.path) {
+        next(savedPath)
+        return
+      }
+    }
+
     const authStore = useAuthStore()
     const requiresAuth = to.meta.requiresAuth !== false
 
